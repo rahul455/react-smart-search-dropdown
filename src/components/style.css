@@ -1,0 +1,5 @@
+.dropdown_custom {
+  max-height: 300px;
+  min-width: 400px;
+  overflow-y: scroll;
+}
