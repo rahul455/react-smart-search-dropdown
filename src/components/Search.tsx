@@ -122,6 +122,7 @@ function Search(props: SearchProps) {
                   color="primary"
                   onClick={() => {
                     addAndSelectHandler(searchLocation, "add");
+                    setSelLocation(searchLocation);
                     setIsSearched(false);
                   }}
                 >
