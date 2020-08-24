@@ -55,9 +55,11 @@ function Search(props: SearchProps) {
     setIsSearched(true);
     const { value } = event.target;
     let selectedCountries = countries;
-    let filter = selectedCountries.filter((country: string) =>
-      country.toLowerCase().includes(value)
-    );
+    let filter = selectedCountries.filter((country: string) => {
+      if (country.toLowerCase().includes(value)) {
+        return country;
+      }
+    });
 
     if (value == "") setIsSearched(false);
     setSearchLocation(value);
@@ -136,11 +138,17 @@ function Search(props: SearchProps) {
     );
   }
   function _renderLoadMore() {
+    let isLoaded = false;
+    if (!isSearched || (isSearched && searchcountries?.length)) isLoaded = true;
     return (
-      <DropdownItem
-        toggle={false}
-        onClick={loadMore}
-      >{`${noOfItems} more...`}</DropdownItem>
+      <>
+        {isLoaded && (
+          <DropdownItem
+            toggle={false}
+            onClick={loadMore}
+          >{`${noOfItems} more...`}</DropdownItem>
+        )}
+      </>
     );
   }
 
