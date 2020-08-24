@@ -138,11 +138,9 @@ function Search(props: SearchProps) {
     );
   }
   function _renderLoadMore() {
-    let isLoaded = false;
-    if (!isSearched || (isSearched && searchcountries?.length)) isLoaded = true;
     return (
       <>
-        {isLoaded && (
+        {!isSearched && (
           <DropdownItem
             toggle={false}
             onClick={loadMore}
